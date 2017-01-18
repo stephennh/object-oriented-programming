@@ -11,7 +11,13 @@ class Player
     1 - @health_points
     if @health_points == 0
       1 - @lives
-        @health_points
+      @health_points == 10
+    end
+    if @lives == 0
+      restart
+    end
+  end
+
 
 
 
