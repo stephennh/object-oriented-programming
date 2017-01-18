@@ -56,16 +56,19 @@ class Player
     # adds to gold coins
     puts "Start"
     p self
-    @gold_coins += treasure
-    # if gold_coins reaches 10
-    if @gold_coins >= 10
-      # score should increase by 1
-      @score += 1
-      @gold_coins -= 10
-      # if score reaches 10
-      if @score == 10
-        # run level_up method
-        level_up
+    # loops over each treasure
+    treasure.times do |treasure|
+      # adds (treasure) gold coins
+      @gold_coins += 1
+      # if gold coins is divisible by 10
+      if @gold_coins % 10 == 0
+        # add 1 score
+        @score += 1
+        # if score is divisible by 10
+          if @score % 10 == 0
+            # level up
+            level_up
+          end
       end
     end
     puts "End"
