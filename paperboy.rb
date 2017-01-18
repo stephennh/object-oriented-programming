@@ -27,13 +27,17 @@ class Paperboy
       # quota delivered multiply by 0.25 for $0.25 per each in quota
       udr_quot = quota * 0.25
       #total earning is the quota($0.25) + over quota($0.5)
-      @earnings = udr_quot + ovr_quot
+      latest_earn = udr_quot + ovr_quot
+      @earnings += latest_earn
     else
       # total earned is the total delivered multiply by value of $0.25
-      @earnings = (total_del * 0.25) - 2
+      latest_earn = (total_del * 0.25) - 2
+      # adding on top of previous value
+      @earnings += latest_earn
     end
-    @experience = total_del
-    return @earnings
+    # += adds ontop of previous value
+    @experience += total_del
+    return latest_earn
   end
 
 
